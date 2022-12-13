@@ -1,43 +1,65 @@
-# useState
+# Difference State and Variable
 
-`useState` is a Hook, and will return the value of the state (in the example above: name) and a function that we can use to change that value (setName). The setName function here is similar to how `this.setState` works.
+This `section` is for example the difference between `state` and `variable`.
 
-## State on function component
+## State
 
-> File : `src/ExampleForm.js`
+File: `pages/CounterWithState.js`
 
-Import useState :
+- Init useState
 
-```javascript
-import React, { useState } from "react";
-```
+  ```jsx
+  const [counter, setCounter] = useState(0);
+  ```
 
-Create state and the attribute :
+- Function for Handle Increment
 
-```javascript
-const [state, setState] = useState({
-  fullname: "",
-  email: "",
-  password: "",
-});
-```
+  ```jsx
+  const Add = () => {
+    setCounter(counter + 1);
+  };
+  ```
 
-Create function for handle on change with setState :
+- Function for Handle Decrement
 
-```javascript
-const handleOnChange = (e) => {
-  setState({
-    ...state,
-    [e.target.name]: e.target.value,
-  });
-};
-```
+  ```jsx
+  const Less = () => {
+    setCounter(counter - 1);
+  };
+  ```
 
-Create function for handle submit :
+## Variable
 
-```javascript
-const handleOnSubmit = (e) => {
-  e.preventDefault();
-  console.log(state);
-};
-```
+File: `pages/CounterWithVariable.js`
+
+- Declare counter variable
+
+  ```jsx
+  let counter = 0;
+  ```
+
+- Init useReducer for forceUpdate Component
+
+  ```jsx
+  const [_, forceUpdate] = useReducer((x) => x + 1, 0);
+  ```
+
+- Function for Handle Increment
+
+  ```jsx
+  const Add = () => {
+    counter = counter + 1;
+    forceUpdate();
+  };
+  ```
+
+- Function for Handle Decrement
+
+  ```jsx
+  const Less = () => {
+    counter = counter - 1;
+    forceUpdate();
+  };
+  ```
+
+**Disclaimer**: `This method is not recomended`
