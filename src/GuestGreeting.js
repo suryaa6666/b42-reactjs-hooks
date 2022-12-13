@@ -1,21 +1,20 @@
-import React, { Component } from 'react'
+//import useEffect here
 
-export default class GuestGreeting extends Component {
+import { useEffect } from "react";
 
-    //Create method WillUnmount inside it can print "GuestG reeting Component Will Unmount" here...
-    // componentDidMount() {
-    //     console.log("GuestGreeting component did mount")
-    // }
+export default function GuestGreeting() {
+  // Create DidMount & WillUnmount with useEffect
+  // inside it can print "Guest Greeting Component Did Mount" & "Guest Greeting Component Will Unmount"
+  useEffect(() => {
+    console.log("GuestGreeting component did mount");
+    return () => {
+      console.log("GuestGreeting component will unmount");
+    };
+  }, []);
 
-    componentWillUnmount() {
-        console.log("GuestGreeting component will unmount")
-    }
-
-    render() {
-        return (
-            <div className="text-center h1 bg-secondary text-light py-5">
-                Please Login !
-            </div>
-        )
-    }
+  return (
+    <div className="text-center h1 bg-secondary text-light py-5">
+      Please Login !
+    </div>
+  );
 }

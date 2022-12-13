@@ -1,65 +1,69 @@
-# Lifecycle
+# useEffect
 
-`Lifecycle` can literally be interpreted as a life cycle. For example, the human life cycle. First humans will be born, then enter the growth phase, and finally will die. Just like humans, every component in react js also has a life cycle.
+The Effect Hook, `useEffect`, adds the ability to perform side effects from a function component. It serves the same purpose as `componentDidMount`, `componentDidUpdate`, and `componentWillUnmount` in React classes, but unified into a single API.
 
-Lifecycle component :
-
-- componentDidmount
-- componentWillUnmount
-- componentDidUpdate
-
-Lifecycle component method diagram: [link](https://projects.wojtekmaj.pl/react-lifecycle-methods-diagram/)
-
-## lifecycle on class component
+## lifecycle on function component
 
 > File : `src/App.js`
+
+Import useState and useEffect :
+
+```javascript
+import React, { useState, useEffect } from "react";
+```
 
 Method componentDidMount :
 
 ```javascript
-componentDidMount(){
-    console.log("App Component Did Mount")
-    console.log(this.state)
-}
+useEffect(() => {
+  console.log("App Component Did Mount");
+  console.log(state);
+}, []);
 ```
 
 Method componentDidUpdate :
 
 ```javascript
-componentDidUpdate(){
-    console.log("App Component Did Update")
-    console.log(this.state)
-}
+useEffect(() => {
+  if (state.user.email) {
+    console.log("App Component Did Update");
+    console.log(state);
+  }
+}, [state]);
 ```
 
 ---
 
 > File : `src/Welcome.js`
 
-Method componentDidMount :
+Import useState and useEffect :
 
 ```javascript
-componentDidMount(){
-    console.log("Welcome Component Did Mount")
-}
+import React, { useState, useEffect } from "react";
 ```
 
-Method componentWillUnmount :
+Method componentDidMount and componentWillUnmount :
 
 ```javascript
-componentWillUnmount(){
-    console.log("Welcome Component  Will Unmount")
-}
+useEffect(() => {
+  console.log("Welcome Component Did Mount");
+  return () => {
+    console.log("Welcome Component Will Unmount");
+  };
+}, []);
 ```
 
 ---
 
 > File : `src/GuestGreeting.js`
 
-Method componentWillUnmount :
+Method componentDidMount and componentWillUnmount :
 
 ```javascript
-componentWillUnmount(){
-    console.log("Guest Greeting Component Will Unmount")
-}
+useEffect(() => {
+  console.log("Guest Greeting Component Did Mount");
+  return () => {
+    console.log("Guest Greeting Component Will Unmount");
+  };
+}, []);
 ```
