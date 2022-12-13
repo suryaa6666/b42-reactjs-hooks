@@ -1,65 +1,65 @@
-# Difference State and Variable
+# Lifecycle
 
-This `section` is for example the difference between `state` and `variable`.
+`Lifecycle` can literally be interpreted as a life cycle. For example, the human life cycle. First humans will be born, then enter the growth phase, and finally will die. Just like humans, every component in react js also has a life cycle.
 
-## State
+Lifecycle component :
 
-File: `pages/CounterWithState.js`
+- componentDidmount
+- componentWillUnmount
+- componentDidUpdate
 
-- Init useState
+Lifecycle component method diagram: [link](https://projects.wojtekmaj.pl/react-lifecycle-methods-diagram/)
 
-  ```jsx
-  const [counter, setCounter] = useState(0);
-  ```
+## lifecycle on class component
 
-- Function for Handle Increment
+> File : `src/App.js`
 
-  ```jsx
-  const Add = () => {
-    setCounter(counter + 1);
-  };
-  ```
+Method componentDidMount :
 
-- Function for Handle Decrement
+```javascript
+componentDidMount(){
+    console.log("App Component Did Mount")
+    console.log(this.state)
+}
+```
 
-  ```jsx
-  const Less = () => {
-    setCounter(counter - 1);
-  };
-  ```
+Method componentDidUpdate :
 
-## Variable
+```javascript
+componentDidUpdate(){
+    console.log("App Component Did Update")
+    console.log(this.state)
+}
+```
 
-File: `pages/CounterWithVariable.js`
+---
 
-- Declare counter variable
+> File : `src/Welcome.js`
 
-  ```jsx
-  let counter = 0;
-  ```
+Method componentDidMount :
 
-- Init useReducer for forceUpdate Component
+```javascript
+componentDidMount(){
+    console.log("Welcome Component Did Mount")
+}
+```
 
-  ```jsx
-  const [_, forceUpdate] = useReducer((x) => x + 1, 0);
-  ```
+Method componentWillUnmount :
 
-- Function for Handle Increment
+```javascript
+componentWillUnmount(){
+    console.log("Welcome Component  Will Unmount")
+}
+```
 
-  ```jsx
-  const Add = () => {
-    counter = counter + 1;
-    forceUpdate();
-  };
-  ```
+---
 
-- Function for Handle Decrement
+> File : `src/GuestGreeting.js`
 
-  ```jsx
-  const Less = () => {
-    counter = counter - 1;
-    forceUpdate();
-  };
-  ```
+Method componentWillUnmount :
 
-**Disclaimer**: `This method is not recomended`
+```javascript
+componentWillUnmount(){
+    console.log("Guest Greeting Component Will Unmount")
+}
+```
