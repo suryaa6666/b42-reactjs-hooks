@@ -1,49 +1,43 @@
-# Hooks
+# useState
 
-Hooks are a new addition in React 16.8. They let you use state and other React features without writing a Class.
+`useState` is a Hook, and will return the value of the state (in the example above: name) and a function that we can use to change that value (setName). The setName function here is similar to how `this.setState` works.
 
-A Hook is a special function that lets you “hook into” React features. For example, useState is a hook that allows you to add React state to functional components.
-
-##### Then what should be prepared for learning the Hooks ?
-
-Actually quite a lot, but the basic things we need to know to learn the hook are :
-
-- Using the State Hook
-- Using the Effect Hook
-
-## State on class component
+## State on function component
 
 > File : `src/ExampleForm.js`
 
-Inside class component create constructor and init state :
+Import useState :
 
 ```javascript
-constructor(props){
-    super(props)
-    this.state = {
-      fullname: '',
-      email: '',
-      password: ''
-    }
-  }
+import React, { useState } from "react";
 ```
 
-Create function for handle on change state value :
+Create state and the attribute :
 
 ```javascript
-handleOnChange = (e) => {
-  this.setState({
-    ...this.state,
+const [state, setState] = useState({
+  fullname: "",
+  email: "",
+  password: "",
+});
+```
+
+Create function for handle on change with setState :
+
+```javascript
+const handleOnChange = (e) => {
+  setState({
+    ...state,
     [e.target.name]: e.target.value,
   });
 };
 ```
 
-Create function for handle on submit state value :
+Create function for handle submit :
 
 ```javascript
-handleOnSubmit = (e) => {
+const handleOnSubmit = (e) => {
   e.preventDefault();
-  console.log(this.state);
+  console.log(state);
 };
 ```
